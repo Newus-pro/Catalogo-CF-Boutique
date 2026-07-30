@@ -1,0 +1,7 @@
+[
+  {"sku":"CF-CAM-001","nome":"Bolsa Camille Tote","categoria":"Tote","cor":"Bordô","preco":289,"destaque":true,"novo":false},
+  {"sku":"CF-AUR-002","nome":"Bolsa Aurora Mini","categoria":"Mini bag","cor":"Dourado","preco":219,"destaque":true,"novo":true},
+  {"sku":"CF-VAL-003","nome":"Bolsa Valentina Clutch","categoria":"Clutch","cor":"Preto","preco":169,"destaque":false,"novo":false},
+  {"sku":"CF-SOF-005","nome":"Bolsa Sofia Balde","categoria":"Balde","cor":"Vinho","preco":259,"destaque":true,"novo":false},
+  {"sku":"CF-LIA-006","nome":"Bolsa Lia Shoulder","categoria":"Ombro","cor":"Marfim","preco":189,"destaque":false,"novo":true}
+]

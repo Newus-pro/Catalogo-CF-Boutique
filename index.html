@@ -132,16 +132,25 @@ a{color:inherit;text-decoration:none;}
 <div class="toast-wrap" id="toastWrap"></div>
 
 <script>
-/* Produtos disponíveis no momento (somente os que estão com catalogo=true e estoque>0 no ERP) */
-const products = [
-  {sku:'CF-CAM-001', nome:'Bolsa Camille Tote', categoria:'Tote', cor:'Bordô', preco:289, destaque:true, novo:false},
-  {sku:'CF-AUR-002', nome:'Bolsa Aurora Mini', categoria:'Mini bag', cor:'Dourado', preco:219, destaque:true, novo:true},
-  {sku:'CF-VAL-003', nome:'Bolsa Valentina Clutch', categoria:'Clutch', cor:'Preto', preco:169, destaque:false, novo:false},
-  {sku:'CF-SOF-005', nome:'Bolsa Sofia Balde', categoria:'Balde', cor:'Vinho', preco:259, destaque:true, novo:false},
-  {sku:'CF-LIA-006', nome:'Bolsa Lia Shoulder', categoria:'Ombro', cor:'Marfim', preco:189, destaque:false, novo:true},
-];
+/* Produtos disponíveis no momento — carregados de products.json (gerado pelo ERP) */
+let products = [];
 
 const WHATSAPP_NUMBER = '5511974673188'; // CF Boutique
+
+async function loadProducts(){
+  try{
+    const res = await fetch('./products.json?t=' + Date.now()); // cache-busting
+    if(!res.ok) throw new Error('Falha ao carregar products.json');
+    products = await res.json();
+  } catch(e){
+    console.error(e);
+    products = [];
+    document.getElementById('grid').innerHTML = `<div class="empty" style="grid-column:1/-1;"><div class="big">⚠️</div>Não foi possível carregar o catálogo agora. Tente novamente em instantes.</div>`;
+    return;
+  }
+  populateFilter();
+  renderGrid(products);
+}
 
 function fmt(v){ return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); }
 
@@ -235,8 +244,7 @@ document.getElementById('qrBtn').addEventListener('click', ()=>{
   window.open(`https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=${url}`, '_blank');
 });
 
-populateFilter();
-renderGrid(products);
+loadProducts();
 </script>
 </body>
 </html>
