@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CF Boutique · Catálogo Online</title>
+<meta name="description" content="Catálogo online de bolsas femininas CF Boutique — compre direto pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine-950:#2c0a17; --wine-900:#3d0f21; --wine-800:#5c1a33; --wine-700:#7a2444;
+  --gold-600:#a9812f; --gold-500:#c6a15b; --gold-300:#e3cd9a; --gold-100:#f3e8d2;
+  --cream:#faf6f1; --cream-dim:#f1e9df; --paper:#ffffff; --ink:#2c2420; --ink-soft:#6f6259;
+  --line:#e7dccb; --radius:16px; --shadow:0 10px 30px -14px rgba(60,20,35,.28);
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;}
+h1,h2,.serif{font-family:'Cormorant Garamond',serif;}
+a{color:inherit;text-decoration:none;}
+
+/* ---- header / hero ---- */
+.hero{
+  background:linear-gradient(175deg,var(--wine-950),var(--wine-800) 65%,var(--wine-700));
+  color:var(--gold-100);
+  padding:54px 24px 70px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{content:"";position:absolute;inset:auto -20% -50% -20%;height:260px;background:radial-gradient(ellipse at center,rgba(198,161,91,.2),transparent 70%);}
+.hero .mark{font-size:15px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-300);opacity:.85;margin-bottom:10px;}
+.hero h1{font-size:42px;margin:0 0 10px;font-weight:700;}
+.hero p{max-width:520px;margin:0 auto;font-size:15px;color:var(--gold-100);opacity:.75;}
+.stitch{border:none;border-top:1px dashed rgba(230,205,154,.4);width:64px;margin:18px auto 0;}
+
+.share-bar{
+  max-width:900px;margin:-28px auto 0;padding:0 20px;position:relative;z-index:2;
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+}
+.share-btn{
+  background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);
+  padding:11px 20px;border-radius:999px;font-size:13.5px;font-weight:500;color:var(--wine-800);
+  display:flex;align-items:center;gap:8px;
+}
+.share-btn:hover{background:var(--gold-100);}
+.share-btn.copied{background:var(--gold-500);color:#fff;}
+
+.wrap{max-width:1180px;margin:0 auto;padding:50px 24px 80px;}
+
+.toolbar{
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px;
+  background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 20px;
+  box-shadow:var(--shadow);max-width:640px;
+}
+.toolbar input{flex:1;border:none;outline:none;background:transparent;font-size:14px;padding:8px 0;color:var(--ink);min-width:120px;}
+.toolbar select{border:none;background:var(--cream-dim);border-radius:999px;padding:9px 16px;font-size:13px;color:var(--ink);}
+
+.count-line{font-size:13px;color:var(--ink-soft);margin:-14px 0 26px;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:26px;}
+.pcard{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);transition:transform .2s ease, box-shadow .2s ease;position:relative;
+}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 18px 34px -14px rgba(60,20,35,.35);}
+.pcard .img{
+  height:190px;background:linear-gradient(135deg,var(--gold-100),var(--cream-dim));
+  display:flex;align-items:center;justify-content:center;font-size:52px;color:var(--gold-500);position:relative;
+}
+.pcard .flags{position:absolute;top:12px;left:12px;display:flex;gap:6px;}
+.flag{background:var(--wine-800);color:#fff;font-size:10.5px;padding:4px 10px;border-radius:999px;letter-spacing:.4px;text-transform:uppercase;}
+.flag.gold{background:var(--gold-500);color:var(--wine-950);}
+.pcard .body{padding:18px 20px 20px;}
+.pcard .code{font-size:11px;letter-spacing:1px;color:var(--ink-soft);text-transform:uppercase;margin-bottom:4px;}
+.pcard .name{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:20px;color:var(--wine-800);line-height:1.2;}
+.pcard .meta{font-size:12.5px;color:var(--ink-soft);margin:5px 0 12px;}
+.pcard .price{font-size:19px;font-weight:600;color:var(--gold-600);margin-bottom:14px;}
+.pcard .actions{display:flex;gap:8px;}
+.buy{
+  flex:1;background:linear-gradient(135deg,#3ea25a,#2f8a49);color:#fff;border:none;border-radius:10px;
+  padding:11px 12px;font-size:13.5px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.icon-only{
+  width:42px;border:1px solid var(--line);background:var(--cream-dim);border-radius:10px;color:var(--wine-800);
+  display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+
+.empty{text-align:center;padding:70px 20px;color:var(--ink-soft);}
+.empty .big{font-size:44px;margin-bottom:12px;}
+
+.footer{
+  text-align:center;padding:36px 20px 46px;color:var(--ink-soft);font-size:12.5px;border-top:1px solid var(--line);margin-top:40px;
+}
+.footer b{color:var(--wine-800);}
+
+.toast-wrap{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:80;}
+.toast{background:var(--wine-800);color:#fff;padding:12px 20px;border-radius:999px;font-size:13.5px;box-shadow:var(--shadow);animation:up .2s ease;}
+@keyframes up{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:520px){ .hero h1{font-size:32px;} .hero{padding:44px 18px 60px;} }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="mark">CF Boutique</div>
+  <h1>Catálogo Online</h1>
+  <p>Bolsas femininas selecionadas, disponíveis em estoque agora. Escolha a sua e finalize direto pelo WhatsApp.</p>
+  <hr class="stitch">
+</div>
+
+<div class="share-bar">
+  <button class="share-btn" id="copyLinkBtn">🔗 Copiar link do catálogo</button>
+  <button class="share-btn" id="shareBtn">↗ Compartilhar</button>
+  <button class="share-btn" id="qrBtn">▦ Ver QR Code</button>
+</div>
+
+<div class="wrap">
+  <div class="toolbar">
+    <input type="text" id="search" placeholder="Buscar bolsa, cor ou categoria...">
+    <select id="filterCat"><option value="">Todas categorias</option></select>
+  </div>
+  <div class="count-line" id="countLine"></div>
+  <div class="grid" id="grid"></div>
+
+  <div class="footer">
+    Catálogo atualizado automaticamente conforme o estoque · <b>CF Boutique</b> · catalogo.cfboutique.com.br
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+/* Produtos disponíveis no momento (somente os que estão com catalogo=true e estoque>0 no ERP) */
+const products = [
+  {sku:'CF-CAM-001', nome:'Bolsa Camille Tote', categoria:'Tote', cor:'Bordô', preco:289, destaque:true, novo:false},
+  {sku:'CF-AUR-002', nome:'Bolsa Aurora Mini', categoria:'Mini bag', cor:'Dourado', preco:219, destaque:true, novo:true},
+  {sku:'CF-VAL-003', nome:'Bolsa Valentina Clutch', categoria:'Clutch', cor:'Preto', preco:169, destaque:false, novo:false},
+  {sku:'CF-SOF-005', nome:'Bolsa Sofia Balde', categoria:'Balde', cor:'Vinho', preco:259, destaque:true, novo:false},
+  {sku:'CF-LIA-006', nome:'Bolsa Lia Shoulder', categoria:'Ombro', cor:'Marfim', preco:189, destaque:false, novo:true},
+];
+
+const WHATSAPP_NUMBER = '5511974673188'; // CF Boutique
+
+function fmt(v){ return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); }
+
+function toast(msg){
+  const wrap = document.getElementById('toastWrap');
+  const el = document.createElement('div');
+  el.className='toast'; el.textContent = msg;
+  wrap.appendChild(el);
+  setTimeout(()=>el.remove(), 2600);
+}
+
+function buildWhatsappLink(p){
+  const msg = `Olá! Tenho interesse na ${p.nome} (código ${p.sku}) por ${fmt(p.preco)}. Ainda está disponível?`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
+
+function renderGrid(list){
+  const grid = document.getElementById('grid');
+  document.getElementById('countLine').textContent = `${list.length} produto(s) disponível(is) agora`;
+  if(!list.length){
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1;"><div class="big">🛍️</div>Nenhuma bolsa encontrada com esse filtro.</div>`;
+    return;
+  }
+  grid.innerHTML = list.map(p=>`
+    <div class="pcard">
+      <div class="img">
+        <div class="flags">
+          ${p.novo?'<span class="flag gold">Novo</span>':''}
+          ${p.destaque?'<span class="flag">Destaque</span>':''}
+        </div>
+        👜
+      </div>
+      <div class="body">
+        <div class="code">Código ${p.sku}</div>
+        <div class="name">${p.nome}</div>
+        <div class="meta">${p.categoria} · ${p.cor}</div>
+        <div class="price">${fmt(p.preco)}</div>
+        <div class="actions">
+          <a class="buy" href="${buildWhatsappLink(p)}" target="_blank" rel="noopener">💬 Comprar via WhatsApp</a>
+          <button class="icon-only" title="Copiar link do produto" onclick="copyProductLink('${p.sku}')">🔗</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function copyProductLink(sku){
+  const url = `${location.origin}${location.pathname}#${sku}`;
+  navigator.clipboard?.writeText(url).then(()=>toast('Link do produto copiado!')).catch(()=>toast('Link: '+url));
+}
+
+function populateFilter(){
+  const cats = [...new Set(products.map(p=>p.categoria))];
+  document.getElementById('filterCat').innerHTML = '<option value="">Todas categorias</option>' + cats.map(c=>`<option>${c}</option>`).join('');
+}
+
+function applyFilters(){
+  const q = document.getElementById('search').value.toLowerCase();
+  const cat = document.getElementById('filterCat').value;
+  const list = products.filter(p=>{
+    const matchesQ = (p.nome+' '+p.cor+' '+p.categoria).toLowerCase().includes(q);
+    const matchesCat = !cat || p.categoria===cat;
+    return matchesQ && matchesCat;
+  });
+  renderGrid(list);
+}
+
+document.getElementById('search').addEventListener('input', applyFilters);
+document.getElementById('filterCat').addEventListener('change', applyFilters);
+
+document.getElementById('copyLinkBtn').addEventListener('click', function(){
+  const url = location.href;
+  navigator.clipboard?.writeText(url).then(()=>{
+    this.textContent = '✓ Link copiado!';
+    this.classList.add('copied');
+    setTimeout(()=>{ this.textContent='🔗 Copiar link do catálogo'; this.classList.remove('copied'); }, 2000);
+  }).catch(()=> toast('Copie manualmente: '+url));
+});
+
+document.getElementById('shareBtn').addEventListener('click', async ()=>{
+  const shareData = { title:'Catálogo CF Boutique', text:'Confira as bolsas disponíveis agora na CF Boutique!', url: location.href };
+  if(navigator.share){
+    try{ await navigator.share(shareData); } catch(e){ /* usuário cancelou */ }
+  } else {
+    toast('Compartilhamento nativo indisponível — use "Copiar link".');
+  }
+});
+
+document.getElementById('qrBtn').addEventListener('click', ()=>{
+  const url = encodeURIComponent(location.href);
+  window.open(`https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=${url}`, '_blank');
+});
+
+populateFilter();
+renderGrid(products);
+</script>
+</body>
+</html>
